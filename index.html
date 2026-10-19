@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>減脂小廚房</title>
+<style>
+:root{--bg:#fff7f0;--card:#fff;--tx:#3a2e2a;--mu:#8a7a72;--ac:#ff7a59;--bd:#f0ddd0;--ok:#4caf7a;--bad:#e5484d;--sf:#fff1e6;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1a18;--card:#2a2623;--tx:#f3e9e2;--mu:#b3a39a;--bd:#443c37;--sf:#352f2b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1d1a18;--card:#2a2623;--tx:#f3e9e2;--mu:#b3a39a;--bd:#443c37;--sf:#352f2b;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 -apple-system,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif}
+#start{position:fixed;inset:0;background:var(--bg);z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:20px;text-align:center}
+#start h1{margin:0;font-size:30px}.pick{display:flex;gap:16px}.pick button{font-size:56px;padding:20px 26px;border-radius:24px;border:2px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer}.pick button span{display:block;font-size:16px}
+.wrap{max-width:900px;margin:0 auto;padding:12px}.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:14px;margin-bottom:12px}
+.top{display:grid;grid-template-columns:200px 1fr;gap:14px}@media(max-width:600px){.top{grid-template-columns:1fr}}
+#dollbox{position:relative;text-align:center;border-radius:16px;border:2px dashed transparent;padding:4px}#dollbox.hot{border-color:var(--ac);background:var(--sf)}
+#dollbox svg{width:180px;max-width:100%;transition:transform .4s}.chew svg{animation:ch .25s 3}@keyframes ch{50%{transform:scale(1.06,.95)}}
+#bubble{min-height:26px;font-size:13px;background:var(--sf);border-radius:12px;padding:3px 10px;display:inline-block}
+.bar{display:grid;grid-template-columns:62px 1fr 96px;gap:8px;align-items:center;font-size:12.5px;margin:3px 0}.bar i{display:block;height:9px;border-radius:6px;background:var(--sf);overflow:hidden}.bar b{display:block;height:100%;background:var(--ok);border-radius:6px}.bar.o b{background:var(--bad)}.bar em{font-style:normal;color:var(--mu);text-align:right}
+.big{font-size:13px;color:var(--mu)}.big strong{font-size:22px;color:var(--tx)}
+nav{display:flex;gap:6px;margin-bottom:10px;position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:var(--bg);padding:4px 0}nav button{flex:1;padding:9px 2px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:14px;cursor:pointer}nav button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.p{display:none}.p.on{display:block}
+input,select{padding:8px 10px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:15px;max-width:100%}
+.btn{padding:8px 14px;border-radius:10px;border:0;background:var(--ac);color:#fff;font-size:14px;cursor:pointer}.btn.g{background:var(--sf);color:var(--tx);border:1px solid var(--bd)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.tray{display:flex;gap:8px;flex-wrap:wrap;min-height:72px;padding:8px;border-radius:14px;background:var(--sf)}
+.chip{touch-action:none;user-select:none;cursor:grab;width:78px;text-align:center;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:6px 2px;font-size:11.5px}.chip s{display:block;text-decoration:none;font-size:32px;line-height:1.15}.chip small{color:var(--mu);display:block}
+.ghost{position:fixed;z-index:50;pointer-events:none;transform:translate(-50%,-50%) scale(1.15);opacity:.9;box-shadow:0 6px 18px #0004}
+.zones{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}.zone{min-height:120px;border-radius:16px;border:2px dashed var(--bd);padding:8px;text-align:center;background:var(--sf)}.zone.hot{border-color:var(--ac)}.zone h4{margin:0 0 4px;font-size:15px}.zone span{font-size:28px;cursor:pointer}
+.rec{border:1px solid var(--bd);border-radius:12px;padding:10px;margin:8px 0;font-size:13.5px}.rec b{font-size:15px}.tag{display:inline-block;padding:1px 8px;border-radius:10px;background:var(--sf);margin:2px;font-size:12px}.tag.m{border:1px dashed var(--ac);cursor:pointer}.tag.h{background:var(--ok);color:#fff}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:600px){.cgrid{grid-template-columns:1fr}}.log{font-size:13px;color:var(--mu);max-height:130px;overflow:auto}
+</style></head><body>
+<div id="start"><h1>🥗 減脂小廚房</h1><p style="margin:0;color:var(--mu)">選擇你的娃娃，開始控制熱量吧！</p><div class="pick"><button data-g="m">👦<span>男生</span></button><button data-g="f">👧<span>女生</span></button></div></div>
+<div class="wrap" id="app" hidden>
+<div class="card top"><div><div id="dollbox" data-drop="doll"><div id="doll"></div></div><div style="text-align:center"><span id="bubble">餵我吃東西吧～</span></div></div>
+<div><div class="big">剩餘熱量 <strong id="rem"></strong> kcal　（已吃 <span id="eaten"></span>　運動 −<span id="burn"></span>）</div><div id="bars" style="margin-top:6px"></div></div></div>
+<nav><button data-t="feed" class="on">🍽 餵食</button><button data-t="ex">🏃 運動</button><button data-t="cook">🍳 料理</button><button data-t="me">👤 計畫</button></nav>
+
+<div class="p on card" id="p-feed"><div class="row"><input id="fin" list="fl" placeholder="輸入食物，例如：雞胸肉" style="flex:1;min-width:160px"><button class="btn" id="fadd">出現食物</button><button class="btn g" id="fclr">清空</button></div><datalist id="fl"></datalist>
+<div class="big" style="margin-bottom:6px">把食物拖到娃娃嘴巴，或直接點一下就餵食（份量為一般一份）</div><div class="tray" id="ftray"></div><div id="msg1" class="big"></div></div>
+
+<div class="p card" id="p-ex"><div class="row"><input id="xin" list="xl" placeholder="運動項目，例如：跑步" style="flex:1;min-width:140px"><input id="xmin" type="number" value="30" min="1" max="300" style="width:80px"> 分鐘</div><div class="row"><button class="btn g" data-m="10">10</button><button class="btn g" data-m="20">20</button><button class="btn g" data-m="30">30</button><button class="btn g" data-m="45">45</button><button class="btn g" data-m="60">60</button><button class="btn" id="xadd">完成運動 💪</button></div><datalist id="xl"></datalist><div id="msg2" class="big"></div></div>
+
+<div class="p card" id="p-cook"><div class="row"><input id="cin" list="fl" placeholder="輸入食材，例如：雞胸肉" style="flex:1;min-width:160px"><button class="btn" id="cadd">拿出食材</button><button class="btn g" id="cclr">清空</button></div>
+<div class="cgrid"><div><div class="tray" id="ctray"></div><div id="msg3" class="big"></div></div><div id="side"><h4 style="margin:0 0 4px">📖 <span id="rt">推薦食譜</span></h4><div id="recs"></div><button class="btn" id="aibtn">🔎 請 Claude 再找更多食譜</button><div id="airec" class="big" style="margin-top:8px"></div></div></div>
+<div class="zones"><div class="zone" data-drop="pot"><h4>🍳 鍋子</h4><div id="potc"></div><button class="btn" data-cook="pot">開火！</button></div><div class="zone" data-drop="oven"><h4>🔥 烤箱</h4><div id="ovc"></div><button class="btn" data-cook="oven">烘烤！</button></div></div>
+<div id="dish"></div></div>
+
+<div class="p card" id="p-me"><div class="row"><label>身高 <input id="h" type="number" style="width:76px"> cm</label><label>體重 <input id="w" type="number" style="width:76px"> kg</label><label>年齡 <input id="a" type="number" style="width:64px"></label></div>
+<div class="row"><select id="act"><option value="1.2">久坐少動</option><option value="1.375" selected>每週運動 1–3 次</option><option value="1.55">每週運動 3–5 次</option><option value="1.725">每週運動 6–7 次</option></select><select id="goal"><option value="lose">減脂</option><option value="keep">維持體重</option><option value="gain">增肌</option></select><button class="btn" id="calc">幫我計算</button></div><div id="plan"></div><h4>今日紀錄</h4><div class="log" id="log"></div><button class="btn g" id="reset" style="margin-top:8px">重新開始今天</button></div>
+</div>
+<script>
+// [名稱,emoji,kcal,蛋白,碳水,脂肪,纖維,鈉mg,鈣mg,鐵mg,維C mg,鉀mg]
+const F=[["雞胸肉","🍗",165,31,0,3.6,0,74,15,1,0,256],["白飯","🍚",260,5,57,.5,.6,2,20,.4,0,70],["糙米飯","🍚",220,5,46,1.8,3.5,5,20,.8,0,150],["雞蛋","🥚",72,6.3,.4,4.8,0,71,28,.9,0,69],["牛奶","🥛",150,8,12,8,0,105,300,0,0,380],["地瓜","🍠",112,2,26,.1,3.9,72,40,.7,24,400],["西蘭花","🥦",34,2.8,7,.4,2.6,33,47,.7,89,316],["蘋果","🍎",95,.5,25,.3,4.4,2,11,.2,8,195],["香蕉","🍌",105,1.3,27,.4,3.1,1,6,.3,10,422],["鮭魚","🐟",208,20,0,13,0,59,12,.3,0,363],["牛排","🥩",250,26,0,15,0,60,10,2.6,0,318],["豆腐","🧊",144,16,4,9,2,14,350,2.7,0,220],["酪梨","🥑",240,3,13,22,10,10,18,.8,15,690],["燕麥","🥣",150,5,27,3,4,2,20,1.7,0,160],["優格","🥛",100,9,7,3.5,0,70,150,.1,1,230],["番茄","🍅",22,1,5,.2,1.5,6,12,.3,17,292],["菠菜","🥬",23,2.9,3.6,.4,2.2,79,99,2.7,28,558],["小黃瓜","🥒",15,.7,3.6,.1,.5,2,16,.3,3,147],["紅蘿蔔","🥕",25,.6,6,.1,1.7,42,24,.2,4,195],["洋蔥","🧅",44,1.2,10,.1,1.9,4,23,.2,8,146],["蝦仁","🍤",99,24,.2,.3,0,111,70,.5,0,259],["玉米","🌽",90,3,19,1.2,2,15,2,.5,7,270],["杏仁","🥜",164,6,6,14,3.5,0,76,1,0,208],["鮪魚","🐟",100,22,0,1,0,300,10,1,0,200],["全麥麵包","🍞",160,8,28,2,4,300,60,2,0,130],["麵","🍜",220,8,43,1,2.5,5,10,1.8,0,60],["橄欖油","🫒",119,0,0,13.5,0,0,0,0,0,0],["起司","🧀",110,7,.4,9,0,180,200,.1,0,30],["珍珠奶茶","🧋",450,3,80,12,0,100,80,.5,0,150],["漢堡","🍔",540,25,40,30,2,1000,100,4,1,400],["披薩","🍕",285,12,36,10,2.5,640,180,2.5,1,190],["薯條","🍟",365,4,48,17,4,246,15,1,15,640],["可樂","🥤",140,0,39,0,0,45,0,0,0,0]];
+const AL={雞胸:"雞胸肉",蛋:"雞蛋",飯:"白飯",奶茶:"珍珠奶茶",麵包:"全麥麵包",花椰菜:"西蘭花",蝦:"蝦仁",燕麥片:"燕麥",番薯:"地瓜",鮭:"鮭魚",牛肉:"牛排",油:"橄欖油"};
+const X={跑步:9.8,快走:4.3,走路:3.5,游泳:7,騎腳踏車:7.5,跳繩:11,瑜珈:3,重訓:5,籃球:8,HIIT:10,爬山:6.5,跳舞:5,羽球:5.5,伏地挺身:8,慢跑:7,有氧:6,拳擊:9};
+const R=[["香煎雞胸佐花椰菜","🍳",["雞胸肉","西蘭花","橄欖油"],"雞胸切片以少許橄欖油中火煎 5 分鐘，加入燙過的花椰菜拌炒，鹽、黑胡椒調味。"],["烤鮭魚地瓜盤","🔥",["鮭魚","地瓜","西蘭花"],"地瓜切塊 200°C 先烤 15 分鐘，放上鮭魚與花椰菜再烤 12 分鐘。"],["酪梨蛋沙拉","🥑",["酪梨","雞蛋","番茄","小黃瓜"],"水煮蛋切塊，與酪梨、番茄、小黃瓜拌勻，擠檸檬汁。"],["燕麥優格杯","🥣",["燕麥","優格","香蕉","杏仁"],"燕麥與優格前一晚冷藏，早上鋪上香蕉片與杏仁碎。"],["蝦仁蛋炒糙米飯","🍤",["蝦仁","雞蛋","糙米飯","玉米"],"蝦仁、玉米先炒熟，加入蛋液與糙米飯拌炒至粒粒分明。"],["菠菜豆腐蛋花湯","🍲",["菠菜","豆腐","雞蛋"],"水滾後放入豆腐丁與菠菜，淋入蛋液成蛋花即可。"],["烤雞胸地瓜便當","🍱",["雞胸肉","地瓜","西蘭花"],"雞胸用少許鹽與黑胡椒醃 15 分鐘，與地瓜一起 200°C 烤 20 分鐘。"],["鮪魚番茄沙拉","🥗",["鮪魚","番茄","小黃瓜","橄欖油"],"鮪魚瀝油，與番茄丁、小黃瓜拌勻，淋橄欖油與檸檬汁。"],["洋蔥牛排蔬菜","🥩",["牛排","洋蔥","紅蘿蔔"],"牛排煎至喜歡的熟度，洋蔥紅蘿蔔同鍋炒香，靜置牛排 3 分鐘再切。"],["烤地瓜優格杯","🍠",["地瓜","優格","杏仁"],"地瓜 200°C 烤 30 分鐘，剖開淋上優格，撒杏仁碎。"],["起司烤時蔬","🧀",["西蘭花","番茄","洋蔥","起司"],"蔬菜切塊鋪烤盤，撒少量起司，190°C 烤 15 分鐘。"],["烤蝦仁酪梨船","🍤",["蝦仁","酪梨","番茄"],"酪梨對半挖空，填入蝦仁與番茄丁，200°C 烤 10 分鐘。"],["烤蘋果燕麥","🍎",["蘋果","燕麥","杏仁"],"蘋果丁拌燕麥與杏仁，180°C 烤 20 分鐘，不加糖也香甜。"],["鮪魚蛋沙拉三明治","🥪",["鮪魚","雞蛋","全麥麵包","小黃瓜"],"水煮蛋壓碎拌鮪魚，夾入全麥麵包與小黃瓜片，麵包可先烤脆。"],["番茄炒蛋菠菜","🍳",["番茄","雞蛋","菠菜"],"先炒蛋盛起，番茄炒出汁後加入菠菜與蛋拌炒。"],["雞胸蔬菜湯麵","🍜",["雞胸肉","麵","紅蘿蔔","菠菜"],"雞胸水煮撕絲，湯中放紅蘿蔔與麵條煮熟，最後加菠菜。"],["豆腐蝦仁燴花椰","🍲",["豆腐","蝦仁","西蘭花"],"豆腐煎至微黃，加入蝦仁與花椰菜，少量水燜 3 分鐘。"],["香蕉燕麥蛋餅","🥞",["香蕉","燕麥","雞蛋"],"香蕉壓泥拌燕麥與蛋，平底鍋小火煎兩面金黃。"],["烤牛排地瓜菠菜盤","🥩",["牛排","地瓜","菠菜"],"地瓜先烤 20 分鐘，牛排放入同烤 8 分鐘，搭配燙菠菜。"],["烤鮭魚酪梨盤","🐟",["鮭魚","酪梨","小黃瓜"],"鮭魚 200°C 烤 12 分鐘，搭配酪梨片與小黃瓜。"],["起司烘蛋","🍳",["雞蛋","起司","菠菜","洋蔥"],"蛋液拌入炒過的洋蔥與菠菜，撒起司，180°C 烤 15 分鐘。"],["雞肉玉米糙米粥","🥣",["糙米飯","雞胸肉","玉米"],"雞胸切丁與糙米飯加水煮 15 分鐘，放入玉米粒續煮 5 分鐘。"]];
+const OV=["地瓜","鮭魚","披薩","全麥麵包","起司"],PO=["麵","白飯","糙米飯"];
+const N=[["熱量","kcal"],["蛋白質","g"],["碳水","g"],["脂肪","g"],["纖維","g"],["鈉(上限)","mg"],["鈣","mg"],["鐵","mg"],["維生素C","mg"],["鉀","mg"]];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const z=()=>Array(10).fill(0),add=(a,b)=>a.map((x,i)=>x+b[i]);
+let S={g:"m",eat:z(),burn:0,log:[],G:z(),T:{feed:[],cook:[]},pot:[],oven:[],dish:null,open:false};
+const find=q=>{q=(AL[q.trim()]||q.trim());if(!q)return -1;return F.findIndex(f=>f[0]==q)>=0?F.findIndex(f=>f[0]==q):F.findIndex(f=>f[0].includes(q)||q.includes(f[0]))};
+$("#fl").innerHTML=F.map(f=>`<option value="${f[0]}">`).join("");$("#xl").innerHTML=Object.keys(X).map(k=>`<option value="${k}">`).join("");
+function doll(){const f=S.g=="f",r=Math.min(1.5,Math.max(.8,S.eat[0]/(S.G[0]||2000))),sx=.9+r*.1;
+const hair=f?`<circle cx="100" cy="92" r="76" fill="#6b3f2a"/><circle cx="28" cy="130" r="20" fill="#6b3f2a"/><circle cx="172" cy="130" r="20" fill="#6b3f2a"/>`:"";
+const top=f?`<path d="M38 80Q100 -10 162 80Q100 40 38 80Z" fill="#6b3f2a"/><path d="M80 24l20 14 20-14-10 22h-20z" fill="#ff7a9a"/>`:`<path d="M34 86Q40 8 100 12Q160 8 166 86Q150 44 100 48Q50 44 34 86Z" fill="#2f2a2a"/>`;
+const mouth=S.open?`<ellipse cx="100" cy="128" rx="17" ry="15" fill="#7a2230"/><ellipse cx="100" cy="136" rx="9" ry="6" fill="#ff8a8a"/>`:`<path d="M84 124Q100 140 116 124" stroke="#7a2230" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+$("#doll").innerHTML=`<svg viewBox="0 0 200 230"><g style="transform:scaleX(${sx});transform-origin:100px 100px">${hair}<ellipse cx="100" cy="95" rx="72" ry="68" fill="#ffd9b8"/>${top}<circle cx="74" cy="100" r="8" fill="#2a2222"/><circle cx="126" cy="100" r="8" fill="#2a2222"/><circle cx="77" cy="97" r="3" fill="#fff"/><circle cx="129" cy="97" r="3" fill="#fff"/><circle cx="55" cy="122" r="10" fill="#ff9a9a" opacity=".5"/><circle cx="145" cy="122" r="10" fill="#ff9a9a" opacity=".5"/>${mouth}</g><rect x="70" y="160" width="60" height="58" rx="22" fill="${f?"#ff8fb0":"#5aa0ff"}"/><circle cx="62" cy="185" r="10" fill="#ffd9b8"/><circle cx="138" cy="185" r="10" fill="#ffd9b8"/></svg>`}
+function bars(){$("#bars").innerHTML=N.map((n,i)=>{const e=S.eat[i],g=S.G[i]||1,p=Math.min(100,e/g*100),o=e>g&&(i==0||i==5||i==3);return`<div class="bar${o?" o":""}"><span>${n[0]}</span><i><b style="width:${p}%"></b></i><em>${Math.round(e*(i==7||i==4?10:1))/(i==7||i==4?10:1)} / ${Math.round(g)}${n[1]}</em></div>`}).join("");
+$("#rem").textContent=Math.round(S.G[0]-S.eat[0]+S.burn);$("#eaten").textContent=Math.round(S.eat[0]);$("#burn").textContent=Math.round(S.burn)}
+function chips(arr,ctx){return arr.length?arr.map(i=>`<div class="chip" data-i="${i}" data-c="${ctx}"><s>${F[i][1]}</s>${F[i][0]}<small>${F[i][2]}kcal</small>${OV.includes(F[i][0])?"<small>🔥限烤箱</small>":PO.includes(F[i][0])?"<small>🍳限鍋子</small>":""}</div>`).join(""):'<span class="big">還沒有食物，上面輸入名稱試試</span>'}
+function render(){doll();bars();$("#ftray").innerHTML=chips(S.T.feed,"feed");$("#ctray").innerHTML=chips(S.T.cook,"cook");
+["pot","oven"].forEach(k=>$(k=="pot"?"#potc":"#ovc").innerHTML=S[k].map((i,j)=>`<span data-rm="${k},${j}" title="點擊取出">${F[i][1]}</span>`).join("")||'<div class="big">拖食材進來</div>');
+$("#dish").innerHTML=S.dish?`<div class="rec"><b>${S.dish.e} ${S.dish.n}</b><br>${S.dish.v[0].toFixed(0)} kcal・蛋白 ${S.dish.v[1].toFixed(0)}g・碳水 ${S.dish.v[2].toFixed(0)}g・脂肪 ${S.dish.v[3].toFixed(0)}g・纖維 ${S.dish.v[4].toFixed(1)}g<br><button class="btn" data-act="serve">餵給娃娃 😋</button></div>`:"";
+recs();$("#log").innerHTML=S.log.slice().reverse().map(l=>`<div>${l}</div>`).join("")||"還沒有紀錄"}
+function recs(){const pool=new Set([...S.T.cook,...S.pot,...S.oven].map(i=>F[i][0]));
+const fo=S.focus;const L=R.filter(r=>!fo||r[2].some(x=>x==fo||x.includes(fo)||fo.includes(x))).map(r=>({r,s:r[2].filter(x=>pool.has(x)).length})).sort((a,b)=>b.s-a.s).slice(0,6);$("#rt").textContent=fo?`「${fo}」的食譜`:"推薦食譜";if(!L.length){$("#recs").innerHTML='<div class="big">內建食譜沒有這項，Claude 正在幫你找…</div>';return}
+$("#recs").innerHTML=L.map(({r})=>{const v=r[2].reduce((a,n)=>add(a,F[F.findIndex(f=>f[0]==n)].slice(2)),z());return`<div class="rec"><b>${r[1]} ${r[0]}</b> <span class="tag">${r[3].includes("烤")?"🔥烤箱":"🍳鍋子"}</span>（約 ${Math.round(v[0])} kcal・蛋白 ${Math.round(v[1])}g）<br>${r[2].map(n=>`<span class="tag ${pool.has(n)?"h":"m"}" data-need="${n}">${pool.has(n)?"✓ ":"+ "}${n}</span>`).join("")}<br>${r[3]}</div>`}).join("")}
+function say(t){$("#bubble").textContent=t}
+function feed(v,e,n){S.eat=add(S.eat,v);S.log.push(`${e} 吃了${n}　+${Math.round(v[0])} kcal`);
+const msg=S.eat[0]>S.G[0]?"吃撐了…今天熱量超標囉 😵":S.eat[5]>S.G[5]?"好鹹！要多喝水 💧":v[0]>400?"好吃，但熱量不低喔！":v[4]>3?"滿滿纖維，好健康 👍":["好吃～😋","謝謝你！","再來一口！"][Math.random()*3|0];
+say(msg);$("#dollbox").classList.add("chew");setTimeout(()=>$("#dollbox").classList.remove("chew"),800);render()}
+function plan(){const h=+$("#h").value,w=+$("#w").value,a=+$("#a").value,af=+$("#act").value,go=$("#goal").value,m=S.g=="m";
+const bmr=10*w+6.25*h-5*a+(m?5:-161),tdee=bmr*af;let kc=go=="lose"?Math.max(tdee*.8,bmr,m?1500:1200):go=="gain"?tdee+300:tdee;
+const p=w*(go=="lose"?2:go=="gain"?1.8:1.6),f=kc*.25/9,c=(kc-p*4-f*9)/4;
+S.G=[kc,p,c,f,kc/1000*14,2300,1000,m?8:18,m?90:75,m?3400:2600];
+const bmi=w/((h/100)**2),wk=(tdee-kc)*7/7700;
+const tips={lose:["每餐先吃蛋白質與蔬菜，再吃主食","主食改糙米、地瓜，增加飽足感與纖維","每週 3 次重訓＋2–3 次有氧，保留肌肉","少喝含糖飲料，水每天 2000 ml 以上"],keep:["維持三大營養素均衡","每週至少 150 分鐘中等強度運動"],gain:["訓練後 1 小時內補充蛋白質與碳水","每週 3–4 次重訓，逐步增加重量","睡眠 7–9 小時幫助肌肉恢復"]}[go];
+$("#plan").innerHTML=`<div class="rec"><b>📋 你的每日方案</b><br>BMI ${bmi.toFixed(1)}・基礎代謝 ${Math.round(bmr)}・總消耗 ${Math.round(tdee)} kcal<br><b>目標熱量 ${Math.round(kc)} kcal</b>（蛋白 ${Math.round(p)}g・碳水 ${Math.round(c)}g・脂肪 ${Math.round(f)}g）<br>微量元素：纖維 ≥ ${Math.round(S.G[4])}g・鈉 ≤ 2300mg・鈣 1000mg・鐵 ${S.G[7]}mg・維C ${S.G[8]}mg・鉀 ${S.G[9]}mg<br>${go!="keep"?`預估每週約 ${wk>0?"減":"增"} ${Math.abs(wk).toFixed(2)} kg<br>`:""}${tips.map(t=>"• "+t).join("<br>")}</div>`;render()}
+let SM=null;try{claude.use("sample").then(s=>{SM=s})}catch(e){}
+const ask=(p)=>SM?SM.json(p,{modelTier:"quick"}):Promise.reject(1);
+async function getFood(q){let i=find(q);if(i>=0)return i;try{const d=await ask(`你是營養師。使用者輸入的食物是「${q}」。請估算一般一份的營養，只回傳 JSON，不要其他文字：{"name":"繁體中文名稱","emoji":"一個最貼切的emoji","kcal":數字,"protein":克,"carb":克,"fat":克,"fiber":克,"sodium":毫克,"calcium":毫克,"iron":毫克,"vitC":毫克,"potassium":毫克}。若不是食物，回傳 {"error":true}`);if(!d||d.error)return -1;F.push([d.name||q,d.emoji||"🍽",+d.kcal||0,+d.protein||0,+d.carb||0,+d.fat||0,+d.fiber||0,+d.sodium||0,+d.calcium||0,+d.iron||0,+d.vitC||0,+d.potassium||0]);return F.length-1}catch(e){return -1}}
+async function getMET(q){let k=Object.keys(X).find(k=>k==q)||Object.keys(X).find(k=>k.includes(q)||q.includes(k));if(k)return[k,X[k]];try{const d=await ask(`運動項目「${q}」的 MET 值（代謝當量）是多少？只回傳 JSON：{"name":"繁體中文名稱","met":數字}。若不是運動，回傳 {"error":true}`);if(!d||d.error||!d.met)return null;X[d.name||q]=+d.met;return[d.name||q,+d.met]}catch(e){return null}}
+async function aiRecipes(){const pool=[...new Set([...S.T.cook,...S.pot,...S.oven].map(i=>F[i][0]))];const el=$("#airec");if(!pool.length){el.textContent="先拿出一些食材，我再幫你找食譜";return}el.textContent="🔎 Claude 正在想食譜…";try{const d=await ask(`請以「${S.focus||pool[0]}」為主角，推薦 4 道適合減脂、健身的料理（至少 1 道用烤箱、1 道用鍋子），可搭配手邊食材：${pool.join("、")}。可補充少量常見調味或食材。只回傳 JSON 陣列：[{"name":"菜名","emoji":"emoji","method":"鍋煮或烤箱","ingredients":["食材名"],"steps":"簡短做法","kcal":數字}]，使用繁體中文`);el.innerHTML=d.map(r=>`<div class="rec"><b>${r.emoji||"🍽"} ${r.name}</b>（約 ${Math.round(r.kcal)} kcal・${r.method||""}）<br>${(r.ingredients||[]).map(n=>`<span class="tag ${pool.includes(n)?"h":"m"}" data-ai="${n}">${pool.includes(n)?"✓ ":"+ "}${n}</span>`).join("")}<br>${r.steps}</div>`).join("")}catch(e){el.textContent="目前無法查詢，請確認已允許 Claude 並稍後再試"}}
+// events
+$$("#start button").forEach(b=>b.onclick=()=>{S.g=b.dataset.g;$("#h").value=S.g=="m"?175:162;$("#w").value=S.g=="m"?70:55;$("#a").value=25;$("#start").hidden=true;$("#start").style.display="none";$("#app").hidden=false;plan()});
+$$("nav button").forEach(b=>b.onclick=()=>{$$("nav button").forEach(x=>x.classList.toggle("on",x==b));$$(".p").forEach(p=>p.classList.toggle("on",p.id=="p-"+b.dataset.t))});
+async function addFood(inp,key,msg){const q=$(inp).value.trim();if(!q)return;$(msg).textContent="🔎 查詢中…";const i=await getFood(q);if(i<0){$(msg).textContent="查不到這個食物，換個說法試試看（需允許 Claude 查詢）";return}$(msg).textContent="";S.T[key].push(i);$(inp).value="";if(key=="cook")S.focus=F[i][0];render();if(key=="cook")aiRecipes()}
+$("#fadd").onclick=()=>addFood("#fin","feed","#msg1");$("#fin").onkeydown=e=>e.key=="Enter"&&addFood("#fin","feed","#msg1");
+$("#cadd").onclick=()=>addFood("#cin","cook","#msg3");$("#cin").onkeydown=e=>e.key=="Enter"&&addFood("#cin","cook","#msg3");$("#aibtn").onclick=aiRecipes;
+document.addEventListener("click",async e=>{const n=e.target.dataset.ai;if(n&&e.target.classList.contains("m")){const i=await getFood(n);if(i>=0){S.T.cook.push(i);render();aiRecipes()}}});
+$("#fclr").onclick=()=>{S.T.feed=[];render()};$("#cclr").onclick=()=>{S.focus=null;$("#airec").innerHTML="";S.T.cook=[];S.pot=[];S.oven=[];S.dish=null;render()};
+$$("[data-m]").forEach(b=>b.onclick=()=>$("#xmin").value=b.dataset.m);
+$("#xadd").onclick=async()=>{const q=$("#xin").value.trim(),mn=+$("#xmin").value;if(!q||!mn)return;$("#msg2").textContent="🔎 查詢中…";const r=await getMET(q);
+if(!r){$("#msg2").textContent="查不到這個運動，換個說法試試看（需允許 Claude 查詢）";return}
+const k=r[0],kc=r[1]*(+$("#w").value||60)*mn/60;S.burn+=kc;S.log.push(`🏃 ${k} ${mn} 分鐘　−${Math.round(kc)} kcal`);$("#msg2").textContent=`${k} ${mn} 分鐘，消耗約 ${Math.round(kc)} kcal，太棒了！`;say("運動完可以多吃一點點 💪");$("#xin").value="";render()};
+$("#calc").onclick=plan;$("#reset").onclick=()=>{S.eat=z();S.burn=0;S.log=[];S.dish=null;say("新的一天開始！");render()};
+$("#recs").onclick=e=>{const n=e.target.dataset.need;if(n&&e.target.classList.contains("m")){S.T.cook.push(F.findIndex(f=>f[0]==n));render()}};
+document.addEventListener("click",e=>{const r=e.target.dataset.rm;if(r){const[k,j]=r.split(",");S[k].splice(+j,1);render()}
+const c=e.target.dataset.cook;if(c)cook(c);if(e.target.dataset.act=="serve"&&S.dish){feed(S.dish.v,S.dish.e,S.dish.n);S.dish=null;render()}});
+function cook(k){const it=S[k];if(!it.length){say("先放食材進去喔！");return}const names=it.map(i=>F[i][0]);
+const v=it.reduce((a,i)=>add(a,F[i].slice(2)),z());const hit=R.filter(r=>r[2].every(n=>names.includes(n))).sort((a,b)=>b[2].length-a[2].length)[0];
+S.dish=hit?{n:hit[0],e:hit[1],v}:{n:"自創"+(k=="pot"?"炒鍋":"烤箱")+"料理",e:k=="pot"?"🍳":"🔥",v};S[k]=[];render()}
+// drag
+let D=null;const under=e=>document.elementFromPoint(e.clientX,e.clientY)?.closest("[data-drop]");
+document.addEventListener("pointerdown",e=>{const c=e.target.closest(".chip");if(c&&!c.classList.contains("ghost"))D={c,x:e.clientX,y:e.clientY,go:false}});
+addEventListener("pointermove",e=>{if(!D)return;if(!D.go&&Math.hypot(e.clientX-D.x,e.clientY-D.y)>8){D.go=true;D.el=D.c.cloneNode(true);D.el.classList.add("ghost");document.body.appendChild(D.el)}
+if(D.go){D.el.style.left=e.clientX+"px";D.el.style.top=e.clientY+"px";const t=under(e);$$("[data-drop]").forEach(x=>x.classList.toggle("hot",x==t));const o=!!t&&t.dataset.drop=="doll"&&D.c.dataset.c=="feed";if(o!=S.open){S.open=o;doll()}}});
+addEventListener("pointerup",e=>{if(!D)return;const d=D;D=null;const i=+d.c.dataset.i,cx=d.c.dataset.c;let t=null;
+if(d.go){t=under(e);d.el.remove();$$("[data-drop]").forEach(x=>x.classList.remove("hot"));S.open=false}
+const f=F[i];if(cx=="feed"&&(!d.go||t&&t.dataset.drop=="doll"))feed(f.slice(2),f[1],f[0]);
+else if(cx=="cook"){const z2=d.go?(t&&["pot","oven"].includes(t.dataset.drop)?t.dataset.drop:null):"pot";const m3=$("#msg3");const dz=cx=="cook"&&!d.go&&OV.includes(f[0])?"oven":z2;if(dz&&dz=="pot"&&OV.includes(f[0]))m3.textContent=`${f[0]}只能放進烤箱 🔥`;else if(dz&&dz=="oven"&&PO.includes(f[0]))m3.textContent=`${f[0]}只能放進鍋子 🍳`;else if(dz){m3.textContent="";S[dz].push(i)}}
+render()});
+render();
+</script></body></html>
